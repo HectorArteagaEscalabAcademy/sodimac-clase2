@@ -1,0 +1,10 @@
+<p>Mi persona favorita es: {{ name }}</p>
+ 
+<input type="text" 
+       [value]="name" 
+       (input)="name = test.value"
+       (change)="change($event)"
+        #test     
+>
+
+<button (click)="cambiarValorPropiedad()" ></button>
