@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { games } from 'src/app/interfaces/games.interface';
 
 @Component({
@@ -9,12 +11,16 @@ import { games } from 'src/app/interfaces/games.interface';
 export class CardComponent implements OnInit {
 
   @Input() games:games[] = [];
+  public state: string = 'estado actual';
+  public stateCard: boolean = true;
 
-  constructor() { }
+  constructor(private router:Router) {}
 
   ngOnInit(): void {
-    console.log(this.games);
-   
+  }
+
+  public checkElement(index:number){
+    this.router.navigate(['/games', index]);
   }
 
 }
