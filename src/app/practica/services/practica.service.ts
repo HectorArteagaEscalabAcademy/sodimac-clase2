@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
-export class PaginaService {
+export class PracticaService {
 
   constructor() { }
 
-  public getPagina(){
+  public getGame(){
     const games = [
       {
         name:"Super Mario Kart",
@@ -38,22 +40,9 @@ export class PaginaService {
         platform : "Nintendo Switch",
         img : "./assets/images/pokemon.jpg"
         }];
+        
     return games;
   }
 
-  public addPagina(){
-    console.log('addPagina');
-    return 'addPagina';
-  }
-
-  public editPagina(){
-    console.log('editPagina');
-    return 'editPagina';
-  }
-
-  public deletePagina(){
-    console.log('deletePagina');
-    return 'deletePagina';
-  }
-
+  
 }

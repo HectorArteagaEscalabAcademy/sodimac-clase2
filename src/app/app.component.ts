@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { persona } from './interfaces/pagina2.interface';
 import { PaginaService } from './services/pagina.service';
 
 @Component({
@@ -7,13 +8,36 @@ import { PaginaService } from './services/pagina.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'clase2';
 
-  constructor(private readonly paginaService:PaginaService){
-    this.paginaService.getPagina();
-    this.paginaService.addPagina();
-    this.paginaService.editPagina();
-    this.paginaService.deletePagina();
+  public parentMessage: string = 'Estoy enviando información del componente padre al hijo';
+  public parentMessageTwo: number = 5;
+
+  public parentObject: Object = {
+    id: 1,
+    name: 'pedro',
+    apellido: 'zambrano'
   }
 
+  constructor(private readonly paginaService: PaginaService) {
+  }
+
+  sendFather($event: string) {
+    console.log($event);
+  }
+
+  secondFather(option: number) {
+    console.log(option);
+  }
+  
+  objectFather(option:Object){
+    console.log(option);
+  }
+
+  objectInterfaceFather(option:persona){
+    const { apellido, edad, id } = option;
+    console.log( "params", apellido, edad, id);
+  }
+  
 }

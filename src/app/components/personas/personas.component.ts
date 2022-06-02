@@ -1,29 +1,39 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-personas',
   templateUrl: './personas.component.html',
   styleUrls: ['./personas.component.css']
 })
-export class PersonasComponent implements OnInit {
+export class PersonasComponent implements OnInit, AfterViewInit {
 
-  public name:string = '';
-  public apellido!:string;
-  public segundoNombre:string;
+  public name: string = '';
+  public apellido!: string;
+  public segundoNombre: string;
 
-  constructor() { 
+  @ViewChild('test') test!:ElementRef<HTMLInputElement>;
+  @ViewChild('elementSelect') elementSelect!:ElementRef<HTMLInputElement>;
+
+  constructor() {
     this.segundoNombre = 'Antonio';
   }
 
   ngOnInit(): void {
-    //console.log("ngOnInit");
   }
 
-  public cambiarValorPropiedad(){
+  ngAfterViewInit(): void {
+      this.test.nativeElement.focus();
+      this.test.nativeElement.value = "hector";
+      this.test.nativeElement.style.backgroundColor = "red";
+      this.elementSelect.nativeElement.value = "2";
+  }
+
+  public cambiarValorPropiedad() {
     this.name = 'dasdasdasd';
   }
 
-  public change(event:Event){
+  public change(event: Event) {
     console.log(event);
   }
 }

@@ -8,6 +8,9 @@ import { Pagina2Component } from './components/pagina2/pagina2.component';
 import { PaginaService } from './services/pagina.service';
 import { PersonasComponent } from './components/personas/personas.component';
 import { Personas2Component } from './components/personas2/personas2.component';
+import { GamesComponent } from './practica/components/games/games.component';
+import { CardComponent } from './practica/components/card/card.component';
+import { CarritoComponent } from './practica/components/carrito/carrito.component';
 
 //import { Personas2Component } from '@components/personas2/personas2.component'; -- ALIAS - PATH
 
@@ -17,7 +20,10 @@ import { Personas2Component } from './components/personas2/personas2.component';
     PaginaComponent,
     Pagina2Component,
     PersonasComponent,
-    Personas2Component
+    Personas2Component,
+    GamesComponent,
+    CardComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

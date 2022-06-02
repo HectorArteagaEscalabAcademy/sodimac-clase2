@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { persona } from '../../interfaces/pagina2.interface';
 
 @Component({
   selector: 'app-pagina2',
@@ -7,9 +8,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Pagina2Component implements OnInit {
 
+  @Input() childObject:Object = {};
+
+  @Output() fatherObject = new EventEmitter<Object>();
+  @Output() fatherInterfaceObject = new EventEmitter<persona>();
+
   constructor() { }
 
   ngOnInit(): void {
+    this.fatherFuctionObject();
+    this.fatherInterfaceFunctionObject();
+  }
+
+  public fatherFuctionObject(){
+
+    const params = {
+      id: 9,
+      name: "manuel",
+      apellido: "mendoza"
+    }
+
+    this.fatherObject.emit(params);
+
+  }
+
+  public fatherInterfaceFunctionObject(){
+
+    const params:persona = {
+      id: 5,
+      name: "pablo",
+      apellido: "alboran",
+      edad: 5
+    }
+
+    this.fatherInterfaceObject.emit(params);
+
   }
 
 }
