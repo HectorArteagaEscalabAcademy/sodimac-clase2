@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { games } from 'src/app/interfaces/games.interface';
+import { games } from '@practica/interfaces/games.interface';
 import { PracticaService } from '../../services/practica.service';
 
 @Component({

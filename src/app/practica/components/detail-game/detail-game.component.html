@@ -1,1 +1,13 @@
-<p>detail-game works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 col-md-6 col-log-6">
+            <img [src]="game.img" class="img-fluid" alt="...">
+        </div>
+        <div class="col-12 col-md-6 col-lg-6">
+            <p class="card-title mt-4"><strong>Titulo:</strong> {{ game.name }}</p>
+            <p class="card-text"><strong>Descripción:</strong> {{ game.description }}</p>
+            <p class="card-text"><strong>Plataforma:</strong> {{ game.platform }}</p>
+            <a [routerLink]="['/games']" class="btn btn-secondary">Volver</a>
+        </div>
+      </div>
+</div>

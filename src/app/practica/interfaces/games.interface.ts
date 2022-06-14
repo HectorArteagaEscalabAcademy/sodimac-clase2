@@ -3,4 +3,5 @@ export interface games{
     description: string;
     platform:    string;
     img:         string;
+    date?:       string;
 }

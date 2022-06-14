@@ -16,6 +16,7 @@ import { HomeComponent } from './practica/components/home/home.component';
 import { ConsoleComponent } from './practica/components/console/console.component';
 import { DetailGameComponent } from './practica/components/detail-game/detail-game.component';
 import { NavbarComponent } from './practica/components/navbar/navbar.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NavbarComponent } from './practica/components/navbar/navbar.component';
     AppRoutingModule
   ],
   providers: [
+    DatePipe,
     PaginaService
   ],
   bootstrap: [AppComponent]

@@ -6,12 +6,12 @@ import { ConsoleComponent } from './practica/components/console/console.componen
 import { DetailGameComponent } from './practica/components/detail-game/detail-game.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent },
-  {path: 'games', component: GamesComponent},
-  {path: 'games/:id', component: DetailGameComponent },
-  {path: 'console', component: ConsoleComponent },
-  {path: 'auth', redirectTo: 'home', pathMatch: 'full'},
-  {path: '**', component: HomeComponent}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'games', component: GamesComponent  },
+  { path: 'games/:id', component: DetailGameComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'console', component: ConsoleComponent },
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

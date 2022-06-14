@@ -1,7 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { games } from 'src/app/interfaces/games.interface';
+import { games } from '@practica/interfaces/games.interface';
 
 @Component({
   selector: 'app-card',
@@ -14,13 +15,22 @@ export class CardComponent implements OnInit {
   public state: string = 'estado actual';
   public stateCard: boolean = true;
 
-  constructor(private router:Router) {}
+  constructor(
+    private router:Router,
+    private datePipe: DatePipe) {}
 
   ngOnInit(): void {
   }
 
   public checkElement(index:number){
     this.router.navigate(['/games', index]);
+  }
+
+  public addGame(game:games){
+    const { date } = game;
+    
+    const newDate = this.datePipe.transform(date,'EEEE, MMMM d, y');
+    console.log(newDate);
   }
 
 }
