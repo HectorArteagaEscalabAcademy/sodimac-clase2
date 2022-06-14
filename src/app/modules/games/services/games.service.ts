@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
-import { games } from '@practica/interfaces/games.interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
+
+import { countriesAll, games } from 'src/app/modules/games/interfaces/games.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class PracticaService {
+export class GamesService {
+
+  private readonly apiUrl: string = environment.apiRestCountries;
 
   private games: games[] = [
     {
@@ -44,7 +52,7 @@ export class PracticaService {
       date: "2017-10-03 04:57:49.551"
     }];
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   public getGame() {
     return this.games;
@@ -52,5 +60,10 @@ export class PracticaService {
 
   public getDetailGame(index: number) {
     return this.games[index];
+  }
+
+  public getCountriesAll():Observable<countriesAll[]> {
+    const all: string = `${this.apiUrl}/all`;
+    return this.http.get<countriesAll[]>(all);
   }
 }

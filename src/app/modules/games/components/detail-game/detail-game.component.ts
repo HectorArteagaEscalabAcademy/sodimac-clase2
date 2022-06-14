@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { games } from '@practica/interfaces/games.interface';
-import { PracticaService } from '@practica/services/practica.service';
+import { games } from 'src/app/modules/games/interfaces/games.interface';
+import { PracticaService } from 'src/app/modules/games/services/games.service';
  
 @Component({
   selector: 'app-detail-game',

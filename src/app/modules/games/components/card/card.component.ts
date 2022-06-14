@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { games } from '@practica/interfaces/games.interface';
+import { games } from 'src/app/modules/games/interfaces/games.interface';
 
 @Component({
   selector: 'app-card',
@@ -32,5 +32,7 @@ export class CardComponent implements OnInit {
     const newDate = this.datePipe.transform(date,'EEEE, MMMM d, y');
     console.log(newDate);
   }
+
+  
 
 }

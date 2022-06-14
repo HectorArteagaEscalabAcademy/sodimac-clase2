@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { persona } from '../../interfaces/pagina2.interface';
+import { persona } from 'src/app/interfaces/pagina2.interface';
 
 @Component({
   selector: 'app-pagina2',

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { persona } from './interfaces/pagina2.interface';
-import { PaginaService } from './services/pagina.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +19,7 @@ export class AppComponent {
     apellido: 'zambrano'
   }
 
-  constructor(private readonly paginaService: PaginaService) {
+  constructor() {
   }
 
   sendFather($event: string) {
