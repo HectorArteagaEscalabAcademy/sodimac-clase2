@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Countries",
+    "route": "/countries",
+    "items": [
+      { "id": 1, "route": "/countries", "name": "List Countries" },
+      { "id": 2, "route": "/countries/json", "name": "List Countries JSON" }
+    ]
+  },
+  {
+    "title": "Games",
+    "route": "/games",
+    "items": [
+      { "id": 1, "route": "/games", "name": "List Games" },
+      { "id": 2, "route": "/games/json", "name": "List Games JSON" }
+    ]
+  }
+]
