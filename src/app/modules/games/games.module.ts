@@ -10,18 +10,25 @@ import { GamesComponent } from './games.component';
 import { ViewGameComponent } from './components/view-game/view-game.component';
 import { ViewDetailComponent } from './components/view-detail/view-detail.component';
 import { GamesService } from './services/games.service';
+import { CreateGameTemplateComponent } from './components/create-game-template/create-game-template.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateGameReactiveComponent } from './components/create-game-reactive/create-game-reactive.component';
 
 @NgModule({
   declarations: [
     CardComponent,
     ViewGameComponent,
     ViewDetailComponent,
-    GamesComponent
+    GamesComponent,
+    CreateGameTemplateComponent,
+    CreateGameReactiveComponent
   ],
   imports: [
     CommonModule,
     GamesRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[
     DatePipe,

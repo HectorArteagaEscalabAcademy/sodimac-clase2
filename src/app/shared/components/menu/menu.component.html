@@ -1,6 +1,6 @@
 <ng-container *ngFor="let menu of menus$ | async">
     <button mat-button [matMenuTriggerFor]="submenu">{{ menu.title }}</button>
     <mat-menu #submenu="matMenu">
-        <button *ngFor="let item of menu.items" mat-menu-item [routerLink]="item.id">{{ item.name }}</button>
+        <button *ngFor="let item of menu.items" mat-menu-item [routerLink]="item.route">{{ item.name }}</button>
     </mat-menu>
 </ng-container>

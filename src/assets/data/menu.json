@@ -12,7 +12,9 @@
     "route": "/games",
     "items": [
       { "id": 1, "route": "/games", "name": "List Games" },
-      { "id": 2, "route": "/games/json", "name": "List Games JSON" }
+      { "id": 2, "route": "/games/json", "name": "List Games JSON" },
+      { "id": 3, "route": "/games/create-game-template", "name": "Create Game to Template" },
+      { "id": 4, "route": "/games/create-game-reactive", "name": "Create Game to Reactive" }
     ]
   }
 ]

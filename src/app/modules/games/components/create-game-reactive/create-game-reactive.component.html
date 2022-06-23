@@ -1,0 +1,56 @@
+<div class="container">
+
+    <h1 class="mt-4">Formulario to Reactive</h1>
+     <hr>
+      <form class="mt-5" [formGroup]="formTemplateReactive">
+          <div class="mb-3">
+              <label for="nameGame" class="form-label">Nombre del juego</label>
+              <input type="text" placeholder="Ingrese nombre del juego" formControlName="nameGame" class="form-control">
+          </div>
+          <div class="mb-3">
+              <label for="theme" class="form-label">Temática</label>
+              <select formControlName="theme" class="form-select">
+                  <option value="">Seleccione</option>
+                  <option value="aventuras">Aventuras</option>
+                  <option value="carreras">Carreras</option>
+                  <option value="estrategia">Estrategia</option>
+                  <option value="peleas">Peleas</option>
+              </select>
+          </div>
+          <div class="mb-3">
+              <label for="platform" class="form-label">Plataforma</label>
+              <select formControlName="platform" class="form-select">
+                  <option value="">Seleccione</option>
+                  <option value="playStation">PlayStation</option>
+                  <option value="nintendo">Nintendo</option>
+                  <option value="nintendoSwitch">Nintendo Switch</option>
+                  <option value="xboxOne">Xbox one</option>
+                  <option value="all">Todas las plataformas</option>
+              </select>
+          </div>
+          <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <textarea formControlName="description" class="form-control" cols="30" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary float-end">Agregar</button>
+      </form>
+  </div>
+  
+  <div class="container">
+      <div class="row">
+          <div class="col">
+  
+              <span>Valid</span>
+              <pre>{{ formTemplateReactive.valid }}</pre>
+  
+              <span>Pristine</span>
+              <pre>{{ formTemplateReactive.pristine }}</pre>
+  
+              <span>Touched</span>
+              <pre>{{ formTemplateReactive.touched }}</pre>
+  
+              <span>Value</span>
+              <pre>{{ formTemplateReactive.value | json }}</pre>
+          </div>
+      </div>
+  </div>

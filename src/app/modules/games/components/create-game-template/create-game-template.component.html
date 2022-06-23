@@ -1,0 +1,54 @@
+<div class="container">
+
+    <h1 class="mt-4">Formulario to Template</h1>
+     <hr>
+      <form autocomplete="off" class="mt-5" (ngSubmit)="save()" #formTemplate="ngForm" >
+          <div class="mb-3">
+              <label for="nameGame" class="form-label">Nombre del juego</label>
+              <input type="text" required minlength="3" ngModel name="nameGame" class="form-control">
+              <span class="form-text text-danger" *ngIf="validatedFields('nameGame')" >Campo es requerido</span>
+              <!--<span class="form-text text-danger" *ngIf="
+                    formTemplate.controls['nameGame']?.invalid &&
+                    formTemplate.controls['nameGame']?.touched">Campo requerido</span>-->
+          </div>
+          <div class="mb-3">
+            <label for="cantGame" class="form-label">Cantidad de juegos</label>
+            <input type="number" min="0" required ngModel name="cantGame" class="form-control">
+            <span class="form-text text-danger" *ngIf="validatedFields('cantGame')" >Campo es requerido</span>
+            <span class="form-text text-danger" *ngIf="validatedCantGamePositive()" >Debe ser mayor a 0</span>
+            <!--<span class="form-text text-danger" *ngIf="
+                  formTemplate.controls['cantGame']?.invalid &&
+                  formTemplate.controls['cantGame']?.value <0 &&
+                  formTemplate.controls['cantGame']?.touched">Campo requerido</span>-->
+        </div>
+          <div class="mb-3">
+              <label for="theme" class="form-label">Temática</label>
+              <select required ngModel name="theme" class="form-select">
+                  <option value="">Seleccione</option>
+                  <option value="aventuras">Aventuras</option>
+                  <option value="carreras">Carreras</option>
+                  <option value="estrategia">Estrategia</option>
+                  <option value="peleas">Peleas</option>
+              </select>
+              <span class="form-text text-danger" *ngIf="validatedFields('theme')" >Campo es requerido</span>
+          </div>
+          <div class="mb-3">
+              <label for="platform" class="form-label">Plataforma</label>
+              <select required ngModel name="platform" class="form-select">
+                  <option value="">Seleccione</option>
+                  <option value="playStation">PlayStation</option>
+                  <option value="nintendo">Nintendo</option>
+                  <option value="nintendoSwitch">Nintendo Switch</option>
+                  <option value="xboxOne">Xbox one</option>
+                  <option value="all">Todas las plataformas</option>
+              </select>
+              <span class="form-text text-danger" *ngIf="validatedFields('platform')" >Campo es requerido</span>
+          </div>
+          <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <textarea required ngModel name="description" class="form-control" cols="30" rows="3"></textarea>
+              <span class="form-text text-danger" *ngIf="validatedFields('description')" >Campo es requerido</span>
+          </div>
+          <button type="submit" class="btn btn-primary float-end">Agregar</button>
+      </form>
+  </div>
