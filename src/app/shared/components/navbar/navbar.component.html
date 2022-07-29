@@ -10,6 +10,18 @@
                 <app-menu></app-menu>
             </ul>
         </div>
+        <form class="d-flex gap-3">
+            <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+                <button class="btn btn-outline-danger" type="button" (click)="auth.logout({ returnTo: document.location.origin })">
+                  Cerrar Sesión
+                </button>
+              </ng-container>
+          
+              <ng-template #loggedOut>
+                <button class="btn btn-outline-success" type="button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+              </ng-template>
+
+          </form>
     </div>
 </nav>
 <!--<router-outlet></router-outlet>-->

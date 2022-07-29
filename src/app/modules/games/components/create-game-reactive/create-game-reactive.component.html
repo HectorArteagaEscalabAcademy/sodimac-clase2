@@ -1,56 +1,138 @@
 <div class="container">
 
     <h1 class="mt-4">Formulario to Reactive</h1>
-     <hr>
-      <form class="mt-5" [formGroup]="formTemplateReactive">
-          <div class="mb-3">
-              <label for="nameGame" class="form-label">Nombre del juego</label>
-              <input type="text" placeholder="Ingrese nombre del juego" formControlName="nameGame" class="form-control">
-          </div>
-          <div class="mb-3">
-              <label for="theme" class="form-label">Temática</label>
-              <select formControlName="theme" class="form-select">
-                  <option value="">Seleccione</option>
-                  <option value="aventuras">Aventuras</option>
-                  <option value="carreras">Carreras</option>
-                  <option value="estrategia">Estrategia</option>
-                  <option value="peleas">Peleas</option>
-              </select>
-          </div>
-          <div class="mb-3">
-              <label for="platform" class="form-label">Plataforma</label>
-              <select formControlName="platform" class="form-select">
-                  <option value="">Seleccione</option>
-                  <option value="playStation">PlayStation</option>
-                  <option value="nintendo">Nintendo</option>
-                  <option value="nintendoSwitch">Nintendo Switch</option>
-                  <option value="xboxOne">Xbox one</option>
-                  <option value="all">Todas las plataformas</option>
-              </select>
-          </div>
-          <div class="mb-3">
-              <label for="description" class="form-label">Descripción</label>
-              <textarea formControlName="description" class="form-control" cols="30" rows="3"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary float-end">Agregar</button>
-      </form>
-  </div>
+    <hr>
+
+    <div class="container">
+        <div class="mt-3">
+            <label for="dateName" class="form-label">Fecha de lanzamiento</label>
+            <input type="date" [formControl]="formTemplateReactiveControl" class="form-control">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+    
+                <span>Valid</span>
+                <pre>{{ formTemplateReactiveControl.valid }}</pre>
+    
+                <span>Pristine</span>
+                <pre>{{ formTemplateReactiveControl.pristine }}</pre>
+    
+                <span>Touched</span>
+                <pre>{{ formTemplateReactiveControl.touched }}</pre>
+    
+                <span>Dirty</span>
+                <pre>{{ formTemplateReactiveControl.dirty }}</pre>
+    
+                <span>Value</span>
+                <pre>{{ formTemplateReactiveControl.value | json }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <form class="mt-5" [formGroup]="formTemplateReactive" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="nameGame" class="form-label">Nombre del juego</label>
+            <input type="text" placeholder="Ingrese nombre del juego" formControlName="nameGame" class="form-control">
+            <span class="d-block form-text text-danger" *ngIf="dataValidFields('nameGame')">{{ nameGameErrorsMessage
+                }}</span>
+
+            <!--<pre>{{ formTemplateReactive.controls['nameGame'].errors | json}}</pre>
+
+            <span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['nameGame'].errors &&
+                       formTemplateReactive.controls['nameGame'].touched">Campo con todas las validaciones</span>
+
+            <span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['nameGame'].errors?.['required'] &&
+                       formTemplateReactive.controls['nameGame'].touched">Campo es requerido</span>
+
+            <span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['nameGame'].errors?.['minlength'] &&
+                              formTemplateReactive.controls['nameGame'].touched">La longitud minima longitud es 5
+                caracteres</span>
+
+            <span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['nameGame'].errors?.['maxlength'] &&
+                              formTemplateReactive.controls['nameGame'].touched">La longitud maxima longitud es 5
+                caracteres</span>-->
+        </div>
+
+        <div class="mb-3">
+            <label for="cant" class="form-label">Cantidad de stock</label>
+            <input type="text" placeholder="Ingrese cantidad del juego" formControlName="cant" class="form-control">
+            <span class="d-block form-text text-danger" *ngIf="dataValidFields('cant')">{{ cantErrorsMessage }}</span>
+            <!--<span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['cant'].errors &&
+            formTemplateReactive.controls['cant'].touched">Campo con todas las validaciones</span>
+
+            <span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['cant'].errors?.['required'] &&
+                              formTemplateReactive.controls['cant'].touched">Campo es requerido</span>
+
+            <span class="d-block form-text text-danger" *ngIf="formTemplateReactive.controls['cant'].errors?.['pattern'] &&
+                              formTemplateReactive.controls['cant'].touched">Solo se permiten caracteres numericos
+                caracteres</span>-->
+        </div>
+
+        <div class="mb-3">
+            <label for="theme" class="form-label">Temática</label>
+            <select formControlName="theme" class="form-select">
+                <option value="">Seleccione</option>
+                <option value="aventuras">Aventuras</option>
+                <option value="carreras">Carreras</option>
+                <option value="estrategia">Estrategia</option>
+                <option value="peleas">Peleas</option>
+            </select>
+            <span class="d-block form-text text-danger" *ngIf="dataValidFields('theme')">Campo con todas las
+                validaciones</span>
+        </div>
+        <div class="mb-3">
+            <label for="platform" class="form-label">Plataforma</label>
+            <select formControlName="platform" class="form-select">
+                <option value="">Seleccione</option>
+                <option value="playStation">PlayStation</option>
+                <option value="nintendo">Nintendo</option>
+                <option value="nintendoSwitch">Nintendo Switch</option>
+                <option value="xboxOne">Xbox one</option>
+                <option value="all">Todas las plataformas</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea formControlName="description" class="form-control" cols="30" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <input formControlName="saveChange" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Guardar cambios
+            </label>
+
+            <span class="d-block form-text text-danger" *ngIf="dataValidFields('saveChange')">{{ saveChangeErrorsMessage }}</span>
+        </div>
+        <button type="submit" class="btn btn-primary float-end">Agregar</button>
+        <button type="button" [disabled]="formTemplateReactive.controls['saveChange'].errors" class="btn btn-primary float-end">Validar por control</button>
+        <!--<button type="button" [disabled]="formTemplateReactive.controls['saveChange'].errors" class="btn btn-primary float-end">Validar por control</button>-->
+        <!--<button type="button" [disabled]="formTemplateReactive.invalid" class="btn btn-primary float-end">Validar con invalid</button>-->
+    </form>
+
   
-  <div class="container">
-      <div class="row">
-          <div class="col">
-  
-              <span>Valid</span>
-              <pre>{{ formTemplateReactive.valid }}</pre>
-  
-              <span>Pristine</span>
-              <pre>{{ formTemplateReactive.pristine }}</pre>
-  
-              <span>Touched</span>
-              <pre>{{ formTemplateReactive.touched }}</pre>
-  
-              <span>Value</span>
-              <pre>{{ formTemplateReactive.value | json }}</pre>
-          </div>
-      </div>
-  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <span>Valid</span>
+            <pre>{{ formTemplateReactive.valid }}</pre>
+
+            <span>Pristine</span>
+            <pre>{{ formTemplateReactive.pristine }}</pre>
+
+            <span>Touched</span>
+            <pre>{{ formTemplateReactive.touched }}</pre>
+
+            <span>Dirty</span>
+            <pre>{{ formTemplateReactive.dirty }}</pre>
+
+            <span>Value</span>
+            <pre>{{ formTemplateReactive.value | json }}</pre>
+        </div>
+    </div>
+</div>
