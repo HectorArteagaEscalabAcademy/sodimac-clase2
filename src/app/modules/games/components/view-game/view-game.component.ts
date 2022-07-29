@@ -15,15 +15,9 @@ export class ViewGameComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGames();
-    this.getCountriesAll();
   }
 
   private getGames(){
     this.games = this.gamesService.getGame();
   }
-
-  private getCountriesAll(){
-    this.gamesService.getCountriesAll().subscribe(request => console.log(request));
-  }
-
 }
