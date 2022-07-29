@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-game-reactive',
@@ -8,8 +8,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class CreateGameReactiveComponent implements OnInit {
 
-  public formTemplateReactive!: FormGroup;
-  public formTemplateReactiveControl: FormControl = new FormControl({ value: '', disabled: true},[Validators.required]);
+  public formTemplateReactive!: UntypedFormGroup;
+  public formTemplateReactiveControl: UntypedFormControl = new UntypedFormControl({ value: '', disabled: true},[Validators.required]);
 
   get cantErrorsMessage(): string {
     const errors = this.formTemplateReactive.get('cant')?.errors;
@@ -48,7 +48,7 @@ export class CreateGameReactiveComponent implements OnInit {
     return '';
   }
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.initForm();

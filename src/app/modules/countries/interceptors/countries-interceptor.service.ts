@@ -1,8 +1,10 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, finalize, Observable, throwError } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from "ngx-spinner";
+import { delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,13 @@ export class CountriesInterceptorService implements HttpInterceptor {
   private readonly ulrApi:string = environment.apiRestCountries;
   private readonly urlExlude:string = 'assets/data/menu.json';
 
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService) { }
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     let request = req;
+
+    this.spinner.show();
 
     if(this.token && req.url.search(this.urlExlude) === -1){
         request = req.clone({
@@ -27,9 +31,11 @@ export class CountriesInterceptorService implements HttpInterceptor {
           }
         })
     }
-    
+
     return next.handle(request).pipe(
-      catchError((err: HttpErrorResponse) => this.handleError(err))
+      //delay(6000),
+      catchError((err: HttpErrorResponse) => this.handleError(err)),
+      finalize(() => this.spinner.hide())
     );
   }
 

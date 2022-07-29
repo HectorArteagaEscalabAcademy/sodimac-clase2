@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ViewCountriesComponent } from './components/view-countries/view-countries.component';
 import { CountriesService } from './services/countries.service';
 import { CountriesInterceptorServiceProviders } from './interceptors/countries-interceptor.service';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CountriesInterceptorServiceProviders } from './interceptors/countries-i
     CommonModule,
     CountriesRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ],
   providers:[
     CountriesService,
